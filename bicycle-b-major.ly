@@ -1,11 +1,10 @@
-\version "2.12.0"
-#(set-global-staff-size 15.8)
+\version "2.18.0"
+% #(set-global-staff-size 15.8)
 upper = \relative c' {
   \clef treble \key g \major \time 4/4 \tempo 4 = 68
   
-\override Script #'padding = #1
+  % \override Script #'padding = #1
   \partial 4
-%  \change Staff = lower aes, ees' \change Staff = upper aes bes ees aes, bes ees
   \phrasingSlurUp  a16\( b d e 
   d4 g fis16 g fis d~ d8 b 
   \grace{ d16[ dis] } e4 b a16 b d b~ b a b a 
@@ -57,7 +56,7 @@ upper = \relative c' {
   << {f2 <g g'>4\( <a a'>} \\ {<a, c>4 <a c>8 f' bes d a d} >>
   << {<bes bes'>4 <g g'>8 <fis fis'>~\) <fis fis'>2} \\ {s2 a16 fis d a \clef bass fis d a8} >>
   << {\clef treble g'''16\(-5 d32-3 e-4 fis16-5 g-5 d e fis d-4 e-5 b32 d e16 b-4 a-3 b d b} \\ {b16 g a b a8 fis16 a g8 fis16 g fis8 fis} >>
-  << {e'16 c32-2 d-3 e16-4 g d c b d c32-5 b c b a b a g-2 a-4 g a g fis g fis e} \\ {g8 e16 g d8 d e8. e16 e4} >>
+  << {e'16 c32-2 d-3 e16-4 g d c b d-4 c32-5 b c b a b a g-2 a-4 g a g fis g-4 fis e} \\ {g8 e16 g d8 d e8. e16 e4} >>
   << {d8\)} \\ {s8} >> r r16 << {<d d'>16\( <e e'> <fis fis'>} \\ {} >>
 
   << {<g g'>2\) <a a'>2} \\ {b8  b16 b~ b g'8. g8 g,16 d'~ d c8.} >>
@@ -79,9 +78,9 @@ upper = \relative c' {
 lower = \relative c {
   \clef bass \key g \major \time 4/4
 
-\override Script #'padding = #1
+% \override Script #'padding = #1
 \override ParenthesesItem #'font-size = #-2
-\override TextScript #'staff-padding = #2
+% \override TextScript #'staff-padding = #2
 
   \partial 4 r4
   g8 d' b'4 fis,8 d' d'4
@@ -90,7 +89,9 @@ lower = \relative c {
   a,8 e' c'4 <d, g c e>2\arpeggio
 
   g,8 d' b' <g a> fis, d' d'16 b a d,
-  e,8 e' b' g << {d b'16 fis'~ fis4} \\ { s4 d16 b d,8} >>
+  e,8 e' b' g << {d b'16 \change Staff = "upper" \stemDown fis'~ fis4}
+    \\ { \change Staff = "lower" s4 d16 b d,8} >>
+  \stemNeutral
   c8 e c' g b, d  d'16 b g d
   a8 e' c' g <d g c e>4\arpeggio <d a' d fis>\arpeggio
 
@@ -109,15 +110,15 @@ lower = \relative c {
   d4~\)\( d16 a b c cis4..\) a16
   c?4.. e16 d4 a
 
-  #(set-octavation -1) g2.~ g8 g16 a
+  g2.~ g8 g16 a
   c1
   g4. g8~ g4. d16 e
-  c'4~ c16 d e8~ e2 #(set-octavation 0)
+  c'4~ c16 d e8~ e2
 
   << {g,8 d'' b'4} \\ {g,,4. d'16 g fis8 fis4.} >>
   << {e8 b' g'4} \\ {e,4.. b16 d8 d4.} >>
   << {c8 e' c'4} \\ {c,,4.. c16 b8 b4.} >>
-  << {a8 \change Staff = upper e'' d'16 c g8 \change Staff = lower} \\ {a,,4.. c16 d a d,4.} >>
+  << {a8 \change Staff = upper \stemDown e'' \stemUp d'16 c g8 \change Staff = lower} \\ {a,,4.. c16 d a d,4.} >>
 
   << {g'8 d' b'4} \\ {g,4. g16 d fis8 fis4.} >>
   << {e8 b' g'4} \\ {e,4.. e16 d8 d4.} >>
@@ -129,8 +130,8 @@ lower = \relative c {
   << {c8 e' c'4 b,,8 d'4.} \\ {c,4. a16 ais b4 g'16 d b g} >>
   << {a8 e'' c'4} \\ {a,,4. c16 a d4 d16 a d d,} >>
 
-  #(set-octavation -1) ees8 ees4 bes'16 c16~ c8 ees, f16 g bes g
-  \times 2/3 {<ees' ees'>8-- <d d'>-- <bes bes'>--} \times 2/3 {<g g'>-- <ees ees'>-- <d d'>--} c'16 d ees f ees8 #(set-octavation 0) c16 cis
+  ees8 ees4 bes'16 c16~ c8 ees, f16 g bes g
+  \times 2/3 {<ees' ees'>8-- <d d'>-- <bes bes'>--} \times 2/3 {<g g'>-- <ees ees'>-- <d d'>--} c'16 d ees f ees8 c16 cis
   << {r4 <d' f>8 r16 <d f> r <d g>8 bes'16 r <f a> d'8} \\ {d,,4. f8 g4 f4} >>
   << {s2 r16 fis' d a d, a d,8} \\ {c'4 \times 2/3 {c8 d ees} d4 d,} >>
   g'16 d' g d fis, d' fis d e, b' e b d, b' d b
@@ -152,7 +153,7 @@ lower = \relative c {
 
 melody = \relative c' {
   \clef treble \key g \major \time 4/4
-\override Script #'padding = #2
+% \override Script #'padding = #2
   \partial 4 s4 s1 s1 s1 s1
   r8 a'16 g a g a g a8 b16 a~ a4
   r8 a16 g a g a b fis8 fis16 g~ g16 d8 e16~
@@ -162,7 +163,7 @@ melody = \relative c' {
   r8 a'16 g a g a g a8 b16 a~ a4
   r8 a16 g a g a b fis8 fis16 g~ g16 a8( g16)
   g4 r8 a16 b c8 b16 a~ a g8 g16~
-  g4 r8 e e'16 d d e b( a) g8 \pageBreak
+  g4 r8 e e'16 d d e b( a) g8
 
   g8 g16 g~ g d'8. d8 g,16 b~ b a8. 
   g8 g16 g~ g g'8. fis8 b,16 e~ e d8.
@@ -180,7 +181,7 @@ melody = \relative c' {
   r8 a16 g a g a g a8 b16 a~ a4
   r8 a16 g a g a b fis8 fis16 g~ g8 d16( e)
   e4 r8. e16 d8 d'16 d~ d16 g,8.
-  e4 r8 r16 d b' a g a fis( e d8) \pageBreak
+  e4 r8 r16 d b' a g a fis( e d8)
 
   r8 a'16 g a g a g a8 b16 a~ a8 r8
   r8 a16 g a g a b fis8 fis16 g~ g8 a
@@ -195,7 +196,7 @@ melody = \relative c' {
   r8 bes16 bes bes8 bes16 c~ c c8. r8 bes16 c
   d8 d16 d~ d d16( c8) c8 bes16 c~ c4
   r8 f,16 f f8 d16 bes'~ bes g8. a8 bes
-  g4 d'8 d~ d2 \pageBreak
+  g4 d'8 d~ d2
 
   R1 R1 \time 2/4 R2
 
@@ -243,58 +244,6 @@ melody = \relative c' {
 任 世 間 怨 我 壞 可 知 我 只 得 你 承 受 我 的 狂 或 野
 }
 
-  \markup {
-   \fill-line {
-    \hspace #-3
-    \column {
-  \line { 不要不要假設我知道 }
-  \line { 一切一切也都是為我而做 }
-  \line { 為何這麼偉大　如此感覺不到 }
-  \line { 不說一句的愛有多好 }
-  \line { 只有一次記得實在接觸到 }
-  \line { 騎著單車的我倆 }
-  \line { 懷緊貼背的擁抱 }
-  \line { 　 }
-  \line { 難離難捨　想抱緊些 }
-  \line { 茫茫人生　好像荒野 }
-  \line { 如孩兒能伏於爸爸的肩膊 }
-  \line { 誰要下車 }
-    }
-    \hspace #-3
-    \column {
-  \line { 難離難捨　總有一些 }
-  \line { 常情如此　不可推卸 }
-  \line { 任世間再冷酷想起這單車 }
-  \line { 還有幸福可借 }
-  \line {　}
-  \line { 經已給我怎會看不到 }
-  \line { 雖說演你角色實在有難度 }
-  \line { 從來虛位以待　何不給個擁抱 }
-  \line { 想我怎去相信這一套 }
-  \line { 多疼惜我卻不便讓我知道 }
-  \line { 懷念單車給你我 }
-  \line { 唯一有過的擁抱 }
-    }
-    \hspace #-3
-    \column {
-  \line { 難離難捨　想抱緊些 }
-  \line { 茫茫人生　好像荒野 }
-  \line { 如孩兒能伏於爸爸的肩膊 }
-  \line { 哪怕遙遙長路多斜 }
-  \line { 你愛我愛多些　讓我他朝走得堅壯些 }
-  \line { 你介意來愛護　又靠誰施捨 }
-  \line { 　 }
-  \line { 難離難捨　想抱緊些 }
-  \line { 茫茫人生　好像荒野 }
-  \line { 如孩兒能伏於爸爸的肩膊　誰要下車 }
-  \line { 難離難捨　總有一些 }
-  \line { 常情如此　不可推卸 }
-  \line { 任世間怨我壞可知我只得你　承受我的狂或野 }
-    }
-   \hspace #1
-   }
-  }
-
 dynamics = {
   s4\mf s1 s1 s1 s1
   s1\p s1 s1 s1 s1 s1 s1 s2 s4\< s4\!
@@ -332,7 +281,7 @@ dynamics = {
 
 \score {
   \new Score \with {
-    \override NonMusicalPaperColumn #'page-break-permission = ##f
+    % \override NonMusicalPaperColumn #'page-break-permission = ##f
   } {
   \new StaffGroup <<
     \new Staff = "melody" \transpose g b { \melody }  <<
@@ -359,17 +308,25 @@ dynamics = {
       \consists "New_dynamic_engraver"
       \consists "Dynamic_align_engraver"
       \consists "Text_engraver"
-      \consists "Skip_event_swallow_translator"
       \consists "Axis_group_engraver"
 
-      \override DynamicLineSpanner #'Y-offset = #0
-      \override TextScript #'font-size = #2
-      \override TextScript #'font-shape = #'italic
-      \override VerticalAxisGroup #'minimum-Y-extent = #'(-1 . 1)
+      % \override DynamicLineSpanner #'Y-offset = #0
+      % \override TextScript #'font-size = #2
+      % \override TextScript #'font-shape = #'italic
+      % \override VerticalAxisGroup #'minimum-Y-extent = #'(-1 . 1)
     }
     \context {
       \PianoStaff
       \accepts Dynamics
+    }
+    \context {
+      \Score
+      % \override VerticalAxisGroup.staff-staff-spacing.basic-distance = #5
+      \override StaffGrouper.staff-staff-spacing =
+        #'((basic-distance . 1)
+           (minimum-distance . 1)
+           (padding . 0)
+           (stretchability . 0))
     }
   }
   \midi { }
