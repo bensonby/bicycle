@@ -1,5 +1,5 @@
 \version "2.18.0"
-% #(set-global-staff-size 15.8)
+#(set-global-staff-size 14)
 upper = \relative c' {
   \clef treble \key g \major \time 4/4 \tempo 4 = 68
   
