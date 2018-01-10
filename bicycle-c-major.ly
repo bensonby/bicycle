@@ -109,10 +109,10 @@ lower = \relative c {
   d4~\)\( d16 a b c cis4..\) a16
   c?4.. e16 d4 a
 
-  #(set-octavation -1) g2.~ g8 g16 a
+  \ottava #-1 g2.~ g8 g16 a
   c1
   g4. g8~ g4. d16 e
-  c'4~ c16 d e8~ e2 #(set-octavation 0)
+  c'4~ c16 d e8~ e2 \ottava #0
 
   << {g,8 d'' b'4} \\ {g,,4. d'16 g fis8 fis4.} >>
   << {e8 b' g'4} \\ {e,4.. b16 d8 d4.} >>
@@ -129,8 +129,8 @@ lower = \relative c {
   << {c8 e' c'4 b,,8 d'4.} \\ {c,4. a16 ais b4 g'16 d b g} >>
   << {a8 e'' c'4} \\ {a,,4. c16 a d4 d16 a d d,} >>
 
-  #(set-octavation -1) ees8 ees4 bes'16 c16~ c8 ees, f16 g bes g
-  \times 2/3 {<ees' ees'>8-- <d d'>-- <bes bes'>--} \times 2/3 {<g g'>-- <ees ees'>-- <d d'>--} c'16 d ees f ees8 #(set-octavation 0) c16 cis
+  \ottava #-1 ees8 ees4 bes'16 c16~ c8 ees, f16 g bes g
+  \times 2/3 {<ees' ees'>8-- <d d'>-- <bes bes'>--} \times 2/3 {<g g'>-- <ees ees'>-- <d d'>--} c'16 d ees f ees8 \ottava #0 c16 cis
   << {r4 <d' f>8 r16 <d f> r <d g>8 bes'16 r <f a> d'8} \\ {d,,4. f8 g4 f4} >>
   << {s2 r16 fis' d a d, a d,8} \\ {c'4 \times 2/3 {c8 d ees} d4 d,} >>
   g'16 d' g d fis, d' fis d e, b' e b d, b' d b
